@@ -1,8 +1,11 @@
 Bootstrap: docker
 From: ubuntu:18.04
 
-%environment
-export PS1='cs 100 - [\u@\h \W]\$ '
-
 %post
-touch /etc/postran
+
+# Make sure packages are up to date
+apt-get update
+apt-get -y upgrade
+
+# init in the container
+apt-get install -y systemd-sysv
